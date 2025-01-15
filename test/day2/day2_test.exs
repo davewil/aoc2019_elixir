@@ -10,7 +10,7 @@ defmodule Day2Test do
   end
 
   # test "part 2" do
-  #   assert Day1.part2("12
+  #   assert Day2.part2("12
   #     14
   #     1969
   #     100756") == 51316
