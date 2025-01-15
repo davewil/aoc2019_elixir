@@ -23,8 +23,8 @@ defmodule Day2 do
   end
 
   defp parse_input(input) do
-    input ## "1,0,0,3"
-      |> String.replace("\n", "")
+    input ## "1,0,0,3\n"
+      |> String.replace("\n", "") ## "1,0,0,3"
       |> String.split(",", trim: true) ## ["1", "0", "0", "3"]
       |> Enum.map(&String.to_integer/1) ## [1, 0, 0, 3]
       |> Enum.with_index(&({&2, &1})) ## [{0, 1}, {1, 0}, {2, 0}, {3, 3}]
