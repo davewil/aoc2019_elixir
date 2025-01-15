@@ -5,9 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-elixir@v1
+      - uses: erlef/setup-beam@v1
         with:
-          otp-version: '26'
-          elixir-version: '1.18.1'
+          otp-version: 'latest'
+          elixir-version: 'latest'
       - run: mix deps.get
       - run: mix test
