@@ -8,3 +8,4 @@ opts = [
 input = Req.get!("https://adventofcode.com/2019/day/1/input", opts).body
 
 IO.puts(Day1.part1(input))
+IO.puts(Day1.part2(input))

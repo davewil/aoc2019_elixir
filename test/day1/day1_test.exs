@@ -7,4 +7,11 @@ defmodule Day1Test do
       1969
       100756") == 34241
   end
+
+  test "part 2" do
+    assert Day1.part2("12
+      14
+      1969
+      100756") == 51316
+  end
 end
