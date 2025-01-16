@@ -47,25 +47,35 @@ defmodule Day2 do
   end
 
   defp run_programme(programme, pointer \\ 0) do
-    case Map.fetch!(programme, pointer) do
-      1 ->
-        val_1 = Map.fetch!(programme, Map.fetch!(programme, pointer + 1))
-        val_2 = Map.fetch!(programme, Map.fetch!(programme, pointer + 2))
-        output = Map.fetch!(programme, pointer + 3)
+    case opcode(programme, pointer) do
+      :add ->
+        {val_1, val_2, output} = operands(programme, pointer)
 
         Map.put(programme, output, val_1 + val_2)
         |> run_programme(pointer + 4)
 
-      2 ->
-        val_1 = Map.fetch!(programme, Map.fetch!(programme, pointer + 1))
-        val_2 = Map.fetch!(programme, Map.fetch!(programme, pointer + 2))
-        output = Map.fetch!(programme, pointer + 3)
+      :multiply ->
+        {val_1, val_2, output} = operands(programme, pointer)
 
         Map.put(programme, output, val_1 * val_2)
         |> run_programme(pointer + 4)
 
-      99 ->
+      :halt ->
         Map.fetch!(programme, 0)
     end
+  end
+
+  defp opcode(programme, pointer) do
+    case Map.fetch!(programme, pointer) do
+      1 -> :add
+      2 -> :multiply
+      99 -> :halt
+    end
+  end
+
+  defp operands(programme, pointer) do
+    {Map.fetch!(programme, Map.fetch!(programme, pointer + 1)),
+     Map.fetch!(programme, Map.fetch!(programme, pointer + 2)),
+     Map.fetch!(programme, pointer + 3)}
   end
 end
