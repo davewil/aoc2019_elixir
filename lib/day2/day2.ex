@@ -61,7 +61,7 @@ defmodule Day2 do
         |> run_programme(pointer + 4)
 
       :halt ->
-        Map.fetch!(programme, 0)
+        execute(:halt, nil, programme)
     end
   end
 
