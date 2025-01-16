@@ -61,15 +61,15 @@ defmodule Day2 do
     end
   end
 
-  def execute(:add, {val_1, val_2, output}, programme) do
+  defp execute(:add, {val_1, val_2, output}, programme) do
     Map.put(programme, output, val_1 + val_2)
   end
 
-  def execute(:multiply, {val_1, val_2, output}, programme) do
+  defp execute(:multiply, {val_1, val_2, output}, programme) do
     Map.put(programme, output, val_1 * val_2)
   end
 
-  def execute(:halt, _, programme) do
+  defp execute(:halt, _, programme) do
     Map.fetch!(programme, 0)
   end
 
