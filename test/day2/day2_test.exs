@@ -2,7 +2,7 @@ defmodule Day2Test do
   use ExUnit.Case
 
   test "part 1" do
-    assert Day2.part1("1,9,10,3,2,3,11,0,99,30,40,50\n") == 3500
+    assert Day2.part1("1,9,10,3,2,3,11,0,99,30,40,50") == 3500
     assert Day2.part1("1,0,0,0,99") == 2
     assert Day2.part1("2,3,0,3,99") == 2
     assert Day2.part1("2,4,4,5,99,0") == 2
