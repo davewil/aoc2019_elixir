@@ -49,11 +49,11 @@ defmodule Day2 do
   defp run_programme(programme, pointer \\ 0) do
     case opcode(programme, pointer) do
       :add ->
-        execute(:add, operands(programme, pointer), programme)
+        execute(:add, programme, pointer)
         |> run_programme(pointer + 4)
 
       :multiply ->
-        execute(:multiply, operands(programme, pointer), programme)
+        execute(:multiply, programme, pointer)
         |> run_programme(pointer + 4)
 
       :halt ->
@@ -61,11 +61,13 @@ defmodule Day2 do
     end
   end
 
-  defp execute(:add, {val_1, val_2, output}, programme) do
+  defp execute(:add, programme, pointer) do
+    {val_1, val_2, output} = operands(programme, pointer)
     Map.put(programme, output, val_1 + val_2)
   end
 
-  defp execute(:multiply, {val_1, val_2, output}, programme) do
+  defp execute(:multiply, programme, pointer) do
+    {val_1, val_2, output} = operands(programme, pointer)
     Map.put(programme, output, val_1 * val_2)
   end
 
