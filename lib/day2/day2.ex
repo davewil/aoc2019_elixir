@@ -51,18 +51,30 @@ defmodule Day2 do
       :add ->
         {val_1, val_2, output} = operands(programme, pointer)
 
-        Map.put(programme, output, val_1 + val_2)
+        execute(:add, {val_1, val_2, output}, programme)
         |> run_programme(pointer + 4)
 
       :multiply ->
         {val_1, val_2, output} = operands(programme, pointer)
 
-        Map.put(programme, output, val_1 * val_2)
+        execute(:multiply, {val_1, val_2, output}, programme)
         |> run_programme(pointer + 4)
 
       :halt ->
         Map.fetch!(programme, 0)
     end
+  end
+
+  def execute(:add, {val_1, val_2, output}, programme) do
+    Map.put(programme, output, val_1 + val_2)
+  end
+
+  def execute(:multiply, {val_1, val_2, output}, programme) do
+    Map.put(programme, output, val_1 * val_2)
+  end
+
+  def execute(:halt, _, programme) do
+    Map.fetch!(programme, 0)
   end
 
   defp opcode(programme, pointer) do
