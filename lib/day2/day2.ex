@@ -49,15 +49,11 @@ defmodule Day2 do
   defp run_programme(programme, pointer \\ 0) do
     case opcode(programme, pointer) do
       :add ->
-        {val_1, val_2, output} = operands(programme, pointer)
-
-        execute(:add, {val_1, val_2, output}, programme)
+        execute(:add, operands(programme, pointer), programme)
         |> run_programme(pointer + 4)
 
       :multiply ->
-        {val_1, val_2, output} = operands(programme, pointer)
-
-        execute(:multiply, {val_1, val_2, output}, programme)
+        execute(:multiply, operands(programme, pointer), programme)
         |> run_programme(pointer + 4)
 
       :halt ->
