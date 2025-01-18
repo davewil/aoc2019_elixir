@@ -19,13 +19,13 @@ defmodule Day1 do
     do_calculate_fuel(mass, 0)
   end
 
-  def do_calculate_fuel(extra_fuel, fuel) do
-    new_fuel = div(extra_fuel, 3) - 2
+  def do_calculate_fuel(mass, extra_fuel) do
+    new_fuel = div(mass, 3) - 2
 
     if new_fuel >= 0 do
-      do_calculate_fuel(new_fuel, fuel + new_fuel)
+      do_calculate_fuel(new_fuel, extra_fuel + new_fuel)
     else
-      fuel
+      extra_fuel
     end
   end
 end
