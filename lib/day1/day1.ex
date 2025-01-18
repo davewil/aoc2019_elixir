@@ -15,15 +15,11 @@ defmodule Day1 do
     |> Enum.sum()
   end
 
-  defp calculate_fuel(mass) do
-    do_calculate_fuel(mass, 0)
-  end
-
-  def do_calculate_fuel(mass, extra_fuel) do
+  def calculate_fuel(mass, extra_fuel \\ 0) do
     new_fuel = div(mass, 3) - 2
 
     if new_fuel >= 0 do
-      do_calculate_fuel(new_fuel, extra_fuel + new_fuel)
+      calculate_fuel(new_fuel, extra_fuel + new_fuel)
     else
       extra_fuel
     end
